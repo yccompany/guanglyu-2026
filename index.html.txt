@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>廣律顧問 | 2026 企業營運高風險自檢清單</title>
+    <!-- 引入外部套件 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* 漸層文字效果 */
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 主視覺深色漸層背景 */
+        .hero-gradient {
+            background: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%);
+        }
+
+        /* 懸浮動畫 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-anim { animation: float 5s ease-in-out infinite; }
+
+        .hidden { display: none; }
+
+        /* 自定義捲軸 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 leading-relaxed text-left">
+
+    <!-- 1. 專業導航列 -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 py-4 shadow-sm">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2 rounded-xl text-white shadow-lg">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-black tracking-tighter text-slate-900 leading-none">GUANGLYU</span>
+                    <span class="text-[10px] font-bold text-blue-600 tracking-widest uppercase mt-1">廣律聯合顧問服務團隊</span>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-6 text-sm font-bold">
+                <a href="#risks" class="hover:text-blue-600 transition-colors">風險分析</a>
+                <a href="#features" class="hover:text-blue-600 transition-colors">四師整合</a>
+                <a href="https://line.me/R/ti/p/@iyx5456h" target="_blank" class="bg-green-500 text-white px-4 py-2 rounded-full flex items-center gap-2 hover:bg-green-600 transition-all shadow-md">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i> LINE@諮詢
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. 主視覺區 (Hero) -->
+    <section class="hero-gradient text-white pt-20 pb-28 relative overflow-hidden">
+        <div class="container mx-auto px-4 flex flex-col lg:flex-row gap-12 items-center relative z-10">
+            
+            <div class="lg:w-3/5 space-y-8 text-left">
+                <div class="inline-flex items-center bg-blue-500/10 text-blue-300 border border-blue-500/30 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase">
+                    <span class="relative flex h-2 w-2 mr-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                    </span>
+                    2026 企業合規最新指南已發布
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-black leading-tight">
+                    別讓<span class="text-blue-400">營運風險</span><br />
+                    成為公司成長的<span class="underline decoration-blue-500 underline-offset-8">絆腳石</span>
+                </h1>
+                <p class="text-lg text-slate-400 max-w-xl leading-relaxed">
+                    勞檢罰單、稅務糾紛、資產配置地雷？廣律「四師整合」專家團隊，為製造業與中小企業提供全方位防護。立即領取自檢清單，掌握您的合規現狀。
+                </p>
+                
+                <div class="grid grid-cols-3 gap-4 pt-4">
+                    <div class="border-l-2 border-blue-600 pl-4">
+                        <div class="text-2xl font-black">500+</div>
+                        <div class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">服務企業</div>
+                    </div>
+                    <div class="border-l-2 border-blue-600 pl-4">
+                        <div class="text-2xl font-black">20+</div>
+                        <div class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">專家團隊</div>
+                    </div>
+                    <div class="border-l-2 border-blue-600 pl-4">
+                        <div class="text-2xl font-black">2026</div>
+                        <div class="text-[10px] text-slate-500 uppercase font-bold tracking-tighter">最新法規版本</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 獲客表單卡片 -->
+            <div class="lg:w-2/5 w-full">
+                <div class="bg-white rounded-[2rem] shadow-2xl p-8 border border-slate-100 text-slate-900 relative">
+                    <!-- 裝飾用圖示 -->
+                    <div class="absolute -top-6 -right-6 float-anim hidden md:block">
+                        <div class="bg-blue-600 p-4 rounded-2xl shadow-xl text-white transform rotate-12">
+                            <i data-lucide="mail" class="w-8 h-8"></i>
+                        </div>
+                    </div>
+
+                    <div class="text-center mb-6">
+                        <h2 class="text-2xl font-black">免費獲取自檢清單</h2>
+                        <p class="text-slate-500 text-xs mt-1">填寫資料，PDF 報告將自動寄送至您的信箱</p>
+                    </div>
+
+                    <!-- 狀態切換 UI (Loading/Success) -->
+                    <div id="loadingUI" class="hidden py-16 text-center">
+                        <div class="animate-spin w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full mx-auto mb-4"></div>
+                        <p class="font-bold text-slate-600">正在傳送報告至您的 Email...</p>
+                    </div>
+
+                    <div id="successUI" class="hidden py-10 text-center">
+                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i data-lucide="check-circle" class="text-green-600 w-10 h-10"></i>
+                        </div>
+                        <h3 class="text-xl font-black mb-2">發送成功</h3>
+                        <p class="text-slate-500 text-sm mb-6">檔案已寄送至：<br><span id="displayEmail" class="font-bold text-blue-600"></span></p>
+                        <button onclick="resetForm()" class="text-blue-600 text-sm font-bold border-b border-blue-600 pb-0.5 hover:text-blue-800">再次填寫</button>
+                    </div>
+
+                    <!-- 核心表單 -->
+                    <form id="leadForm" class="space-y-4">
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">公司全銜</label>
+                            <input type="text" id="company" required placeholder="例如：廣律聯合事務顧問有限公司" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none transition-all">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-1">
+                                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">聯絡人職稱</label>
+                                <input type="text" id="position" required placeholder="例如：總經理" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none transition-all">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">企業所在地</label>
+                                <select id="location" required class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none transition-all appearance-none">
+                                    <option value="" disabled selected>請選擇區域</option>
+                                    <optgroup label="北部地區">
+                                        <option value="台北市">台北市</option>
+                                        <option value="新北市">新北市</option>
+                                        <option value="桃園市">桃園市</option>
+                                        <option value="基隆市">基隆市</option>
+                                        <option value="新竹縣市">新竹縣市</option>
+                                        <option value="宜蘭縣">宜蘭縣</option>
+                                    </optgroup>
+                                    <optgroup label="中部地區">
+                                        <option value="台中市">台中市</option>
+                                        <option value="苗栗縣">苗栗縣</option>
+                                        <option value="彰化縣">彰化縣</option>
+                                        <option value="南投縣">南投縣</option>
+                                        <option value="雲林縣">雲林縣</option>
+                                    </optgroup>
+                                    <optgroup label="南部地區">
+                                        <option value="高雄市">高雄市</option>
+                                        <option value="台南市">台南市</option>
+                                        <option value="嘉義縣市">嘉義縣市</option>
+                                        <option value="屏東縣">屏東縣</option>
+                                    </optgroup>
+                                    <optgroup label="其他地區">
+                                        <option value="花蓮/台東">花蓮/台東</option>
+                                        <option value="澎金馬/離島">澎金馬/離島</option>
+                                        <option value="海外/其他">海外/其他</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">接收 Email 信箱</label>
+                            <input type="email" id="email" required placeholder="建議使用公司 Email" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none transition-all">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">聯絡電話 (手機或市話)</label>
+                            <input type="tel" id="phone" required placeholder="0912-345-678 或專線號碼" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600 outline-none transition-all">
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-xl shadow-lg transform transition active:scale-95 flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-5 h-5"></i> 將自檢報告傳送至我的信箱
+                        </button>
+                    </form>
+                    <p class="text-[10px] text-center text-slate-400 mt-4 leading-relaxed">
+                        您的資料僅供廣律聯合顧問服務團隊聯繫合規諮詢使用。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 痛點區塊 -->
+    <section id="risks" class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-black mb-6">您的企業是否正面臨這些危險訊號？</h2>
+                <p class="text-slate-500 font-medium text-lg">廣律顧問分析 500+ 家企業，最常遇到的法律與合規隱憂：</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 勞資風險 -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group">
+                    <div class="w-12 h-12 bg-red-100 rounded-2xl flex items-center justify-center mb-6 text-red-600 group-hover:bg-red-600 group-hover:text-white transition-colors">
+                        <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-4">勞動檢查高危區</h3>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 mt-0.5 shrink-0"></i> 工作規則未核備、84-1 約定書未落實</li>
+                        <li class="flex items-start gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 mt-0.5 shrink-0"></i> 加班費計算基數錯誤，引發勞資爭議</li>
+                        <li class="flex items-start gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-red-500 mt-0.5 shrink-0"></i> 差勤紀錄與實際工時不符，面臨巨額罰款</li>
+                    </ul>
+                </div>
+
+                <!-- 稅務資產 -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group">
+                    <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-4">財務稅務地雷</h3>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i> 企業主私帳與公司帳混淆，面臨國稅局補稅</li>
+                        <li class="flex items-start gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i> 營收破億卻無稅務籌劃，利潤被稅收侵蝕</li>
+                        <li class="flex items-start gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i> 傳承規劃缺失，不動產與股權轉讓高成本</li>
+                    </ul>
+                </div>
+
+                <!-- 營運合規 -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all group">
+                    <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center mb-6 text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                        <i data-lucide="gantt-chart" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-4">法務與資產安全</h3>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex items-start gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-amber-500 mt-0.5 shrink-0"></i> 商業契約不嚴謹，面對違約毫無防範能力</li>
+                        <li class="flex items-start gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-amber-500 mt-0.5 shrink-0"></i> 違章工廠或土地變更，遲遲無法合法化</li>
+                        <li class="flex items-start gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-amber-500 mt-0.5 shrink-0"></i> 公司大小章管理、董事會紀錄流於形式</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 四師整合介紹 -->
+    <section id="features" class="py-24 bg-slate-900 text-white overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl font-black mb-8 leading-tight">廣律的「四師整合」<br/>為何無法被取代？</h2>
+                    <p class="text-slate-400 mb-10 text-lg leading-relaxed">
+                        老闆的時間應該花在賺錢，而非處理瑣碎的訴訟與勞檢。我們打破傳統顧問各自為政的僵局，提供真正的整合防護網。
+                    </p>
+                    
+                    <div class="space-y-6 text-left">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-600 p-3 rounded-xl"><i data-lucide="scale" class="w-6 h-6"></i></div>
+                            <div>
+                                <h4 class="font-bold">律師團隊：防禦體系</h4>
+                                <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">負責：勞資糾紛、契約審閱、訴訟代理</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-600 p-3 rounded-xl"><i data-lucide="calculator" class="w-6 h-6"></i></div>
+                            <div>
+                                <h4 class="font-bold">會計師：利潤體系</h4>
+                                <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">負責：稅務規劃、薪資審核、合規結帳</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-600 p-3 rounded-xl"><i data-lucide="map" class="w-6 h-6"></i></div>
+                            <div>
+                                <h4 class="font-bold">地政士：資產體系</h4>
+                                <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">負責：工業地規劃、資產傳承、土地合法化</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-600 p-3 rounded-xl"><i data-lucide="users" class="w-6 h-6"></i></div>
+                            <div>
+                                <h4 class="font-bold">勞資顧問：人資體系</h4>
+                                <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">負責：勞檢對策、工作規則撰寫、績效考核</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 relative">
+                    <div class="bg-blue-600/20 absolute -inset-10 blur-[100px] rounded-full"></div>
+                    <div class="relative bg-slate-800 border border-slate-700 p-8 rounded-[3rem] shadow-2xl">
+                        <div class="space-y-6">
+                            <div class="flex justify-between items-center border-b border-slate-700 pb-4">
+                                <span class="font-bold text-blue-400">廣律整合模式</span>
+                                <span class="text-xs text-slate-500 uppercase">2026 Standard</span>
+                            </div>
+                            <div class="bg-slate-900/50 p-6 rounded-2xl">
+                                <div class="text-sm text-slate-400 mb-2">單一窗口整合進度</div>
+                                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-blue-600 h-full w-[100%]"></div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-300 italic leading-relaxed">
+                                "傳統模式：您要分別跟律師、會計師、人資解釋同一個問題。廣律模式：您只需開口一次，四師團隊共同為您出策。"
+                            </p>
+                            <div class="flex gap-4">
+                                <div class="h-10 w-10 bg-slate-700 rounded-full flex items-center justify-center shadow-lg"><i data-lucide="shield" class="w-4 h-4 text-blue-400"></i></div>
+                                <div class="h-10 w-10 bg-slate-700 rounded-full flex items-center justify-center shadow-lg"><i data-lucide="zap" class="w-4 h-4 text-blue-400"></i></div>
+                                <div class="h-10 w-10 bg-slate-700 rounded-full flex items-center justify-center shadow-lg"><i data-lucide="lock" class="w-4 h-4 text-blue-400"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Footer -->
+    <footer class="bg-white border-t border-slate-100 py-16">
+        <div class="container mx-auto px-4 text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+                <div class="max-w-sm">
+                    <div class="flex items-center space-x-3 mb-6 justify-center md:justify-start">
+                        <div class="bg-blue-600 p-2 rounded-xl text-white">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <span class="text-2xl font-black tracking-tighter text-slate-900">GUANGLYU</span>
+                    </div>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">
+                        廣律聯合顧問服務團隊致力於為企業主提供最穩健的合規護航。跨足法律、會計、地政與勞資，是您事業成長的最佳夥伴。
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 justify-center md:justify-start">
+                            <div class="bg-slate-100 p-2 rounded-lg"><i data-lucide="phone" class="w-4 h-4 text-blue-600"></i></div>
+                            <div>
+                                <p class="text-[10px] text-slate-400 font-bold uppercase">桃園公司</p>
+                                <p class="text-sm font-black">07-222-5866</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 justify-center md:justify-start">
+                            <div class="bg-slate-100 p-2 rounded-lg"><i data-lucide="phone-forwarded" class="w-4 h-4 text-blue-600"></i></div>
+                            <div>
+                                <p class="text-[10px] text-slate-400 font-bold uppercase">高雄公司</p>
+                                <p class="text-sm font-black">03-358-6879</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full md:w-auto text-left">
+                    <div>
+                        <h5 class="font-black mb-6 text-sm uppercase tracking-widest text-blue-600">聯繫我們 (Mail)</h5>
+                        <ul class="space-y-6 text-sm text-slate-600 font-medium">
+                            <li class="flex flex-col">
+                                <span class="text-[10px] text-slate-400 font-bold mb-1">北廣客服信箱</span>
+                                <a href="mailto:service@guanglyu.com" class="hover:text-blue-600 transition-colors">service@guanglyu.com</a>
+                            </li>
+                            <li class="flex flex-col">
+                                <span class="text-[10px] text-slate-400 font-bold mb-1">南廣客服信箱</span>
+                                <a href="mailto:service-ks@guanglyu.com" class="hover:text-blue-600 transition-colors">service-ks@guanglyu.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hidden md:block text-left">
+                        <h5 class="font-black mb-6 text-sm uppercase tracking-widest text-slate-400">快速連結</h5>
+                        <ul class="space-y-4 text-sm text-slate-600 font-bold">
+                            <li><a href="#risks" class="hover:text-blue-600 transition-all">風險分析</a></li>
+                            <li><a href="#features" class="hover:text-blue-600 transition-all">四師整合優勢</a></li>
+                            <li><a href="https://line.me/R/ti/p/@iyx5456h" target="_blank" class="hover:text-blue-600 transition-all">LINE@預約諮詢</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-slate-400 uppercase tracking-widest font-bold">
+                <p>&copy; 2026 Guanglyu United Consulting. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-slate-600 transition-colors">隱私政策</a>
+                    <a href="#" class="hover:text-slate-600 transition-colors">服務條款</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 6. 浮動 LINE 按鈕 -->
+    <a href="https://line.me/R/ti/p/@iyx5456h" target="_blank" class="fixed bottom-8 right-8 z-[100] group">
+        <div class="bg-green-500 p-5 rounded-full shadow-2xl flex items-center justify-center border-4 border-white transform transition-all group-hover:scale-110 active:scale-95">
+            <i data-lucide="message-circle" class="text-white w-8 h-8"></i>
+        </div>
+        <div class="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white px-4 py-2 rounded-xl shadow-lg border border-slate-100 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+            <span class="text-xs font-black text-slate-900 tracking-tight">點擊加 LINE 預約諮詢</span>
+        </div>
+    </a>
+
+    <!-- 7. 客製化訊息彈窗 (取代 alert) -->
+    <div id="customModal" class="hidden fixed inset-0 z-[200] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+        <div class="bg-white rounded-[2rem] p-8 max-w-sm w-full shadow-2xl text-center">
+            <div id="modalIcon" class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"></div>
+            <h3 id="modalTitle" class="text-xl font-black mb-2"></h3>
+            <p id="modalMsg" class="text-slate-500 text-sm mb-8 leading-relaxed"></p>
+            <button onclick="closeModal()" class="w-full py-4 bg-slate-900 text-white font-bold rounded-xl transition-colors hover:bg-slate-800 shadow-lg">確定</button>
+        </div>
+    </div>
+
+    <!-- JavaScript 邏輯 -->
+    <script>
+        // 初始化 Lucide 圖示
+        lucide.createIcons();
+
+        // 初始化 EmailJS
+        (function() { 
+            emailjs.init("Uq-_HVVNe98NtxZE-"); 
+        })();
+
+        const form = document.getElementById('leadForm');
+        const loadingUI = document.getElementById('loadingUI');
+        const successUI = document.getElementById('successUI');
+        const displayEmail = document.getElementById('displayEmail');
+
+        // 顯示自定義彈窗
+        function showModal(title, message, type = 'success') {
+            const modal = document.getElementById('customModal');
+            const iconBox = document.getElementById('modalIcon');
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalMsg').textContent = message;
+            
+            if (type === 'success') {
+                iconBox.className = "w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 bg-green-100 text-green-600";
+                iconBox.innerHTML = '<i data-lucide="check" class="w-8 h-8"></i>';
+            } else {
+                iconBox.className = "w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 bg-red-100 text-red-600";
+                iconBox.innerHTML = '<i data-lucide="alert-circle" class="w-8 h-8"></i>';
+            }
+            lucide.createIcons();
+            modal.classList.remove('hidden');
+        }
+
+        // 關閉自定義彈窗
+        function closeModal() {
+            document.getElementById('customModal').classList.add('hidden');
+        }
+
+        // 處理表單提交
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            form.classList.add('hidden');
+            loadingUI.classList.remove('hidden');
+
+            const params = {
+                service_id: 'service_r0xk87c',
+                template_id: 'template_ydxw5tm',
+                template_params: {
+                    company_name: document.getElementById('company').value,
+                    position: document.getElementById('position').value,
+                    location: document.getElementById('location').value,
+                    phone: document.getElementById('phone').value,
+                    reply_to: document.getElementById('email').value,
+                    message: `【2026 自檢領取】來源：Landing Page | 位置：${document.getElementById('location').value} | 電話：${document.getElementById('phone').value}`
+                }
+            };
+
+            emailjs.send(params.service_id, params.template_id, params.template_params)
+                .then(function() {
+                    displayEmail.textContent = params.template_params.reply_to;
+                    loadingUI.classList.add('hidden');
+                    successUI.classList.remove('hidden');
+                    showModal("發送成功", "2026 最新自檢報告已傳送！請檢查您的 Email 信箱。");
+                }, function(error) {
+                    loadingUI.classList.add('hidden');
+                    form.classList.remove('hidden');
+                    showModal("傳送異常", "傳送過程出現錯誤，請檢查網路或點擊右下角 LINE@ 聯繫顧問。", "error");
+                });
+        });
+
+        // 重設表單狀態
+        function resetForm() {
+            successUI.classList.add('hidden');
+            form.reset();
+            form.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
